@@ -1,3 +1,5 @@
 cmake-build-debug
 exec
 idea/
+Source.cpp
+.idea/workspace.xml
