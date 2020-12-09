@@ -25,6 +25,7 @@ namespace Utilities {
 
 }
 
+// create the matrix
 void Utilities::generateSparseMatrix(const std::string &fileName) {
 
     std::ofstream fout;
@@ -52,6 +53,7 @@ void Utilities::generateSparseMatrix(const std::string &fileName) {
     fout.close();
 }
 
+// ensures fileName exists in our current directory
 bool Utilities::exists(const std::string& fileName) {
     struct stat buffer;
 
@@ -59,6 +61,7 @@ bool Utilities::exists(const std::string& fileName) {
 
 }
 
+// ensures fileName exists in our log.txt
 bool Utilities::isLogged(const std::string& fileName) {
     std::ifstream fin;
     fin.open(LOG);
@@ -74,6 +77,7 @@ bool Utilities::isLogged(const std::string& fileName) {
     return false;
 }
 
+// Saves the file created to our log.txt
 void Utilities::logCreatedFile(const std::string& fileName){
     std::ofstream fout;
     fout.open(LOG, std::ios::app);
@@ -81,6 +85,7 @@ void Utilities::logCreatedFile(const std::string& fileName){
     fout.close();
 }
 
+// Deletes files we've created
 void Utilities::clearLoggedFiles() {
     std::vector<std::string> loggedFiles = getLoggedFiles();
     for(const std::string& loggedFile: loggedFiles) {
@@ -92,6 +97,9 @@ void Utilities::clearLoggedFiles() {
 
 }
 
+// This is used to get the names of files that we have created
+// useful for when you want to read in the matrix from the file
+// a simple for(loggedFile in Utilities::getLoggedFiles()) {file read data} will work
 std::vector<std::string> Utilities::getLoggedFiles() {
     std::ifstream fin;
     fin.open(LOG);
